@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Steg Ljubljana 3</title>
+
+    <meta name="description" content="Steg Ljubljana 3 – skavti, dogodivščine, prijateljstvo in življenje v naravi.">
+
+    <style>
+        /* =========================
+           OSNOVNE NASTAVITVE
+        ========================== */
+
+        :root {
+            --modra: #063b63;
+            --modra-temna: #042b48;
+            --zelena: #124d3a;
+            --zelena-svetla: #1d6b50;
+            --bela: #ffffff;
+            --ozadje: #f3f5f2;
+            --tekst: #17352d;
+            --zlata: #d5a928;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--tekst);
+            background: var(--ozadje);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+
+        /* =========================
+           NAVIGACIJA
+        ========================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(4, 43, 72, 0.96);
+            backdrop-filter: blur(10px);
+
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0 3px 20px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #67b58d;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #7bc39b;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(4, 43, 72, 0.72),
+                    rgba(18, 77, 58, 0.78)
+                ),
+                url("rutke.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+
+            padding: 120px 20px 80px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 25px;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: #8bd0a8;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            max-width: 700px;
+            margin: 0 auto 35px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+
+            background: white;
+            color: var(--modra);
+
+            font-weight: 800;
+            transition: 0.3s;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .button:hover {
+            transform: translateY(-4px);
+            background: #dff1e7;
+        }
+
+
+        /* =========================
+           SPLOŠNO
+        ========================== */
+
+        section {
+            padding: 90px 6%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--modra);
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            max-width: 650px;
+            margin: auto;
+            color: #52665e;
+        }
+
+
+        /* =========================
+           O NAS
+        ========================== */
+
+        .about {
+            background: white;
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 25px;
+
+            box-shadow: 15px 15px 0 var(--zelena);
+        }
+
+        .about-text h3 {
+            color: var(--zelena);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           VEJE
+        ========================== */
+
+        .branches {
+            background: var(--ozadje);
+        }
+
+        .branch-grid {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .branch-card {
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.14);
+        }
+
+        .branch-top {
+            height: 10px;
+        }
+
+        .bobri .branch-top {
+            background: #a88300;
+        }
+
+        .volcici .branch-top {
+            background: #f2b400;
+        }
+
+        .iv .branch-top {
+            background: #32a85b;
+        }
+
+        .pp .branch-top {
+            background: #ed4938;
+        }
+
+        .branch-content {
+            padding: 30px 25px;
+        }
+
+        .branch-icon {
+            width: 65px;
+            height: 65px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            color: white;
+            font-size: 1.8rem;
+
+            margin-bottom: 20px;
+        }
+
+        .bobri .branch-icon {
+            background: #a88300;
+        }
+
+        .volcici .branch-icon {
+            background: #f2b400;
+        }
+
+        .iv .branch-icon {
+            background: #32a85b;
+        }
+
+        .pp .branch-icon {
+            background: #ed4938;
+        }
+
+        .branch-card h3 {
+            color: var(--modra);
+            font-size: 1.35rem;
+            margin-bottom: 8px;
+        }
+
+        .age {
+            font-weight: bold;
+            color: #66756e;
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================
+           VODITELJI
+        ========================== */
+
+        .leaders {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--modra),
+                    var(--zelena)
+                );
+
+            color: white;
+        }
+
+        .leaders .section-title h2 {
+            color: white;
+        }
+
+        .leaders .section-title p {
+            color: #dcebe3;
+        }
+
+        .leader-box {
+            max-width: 900px;
+            margin: auto;
+
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+
+            padding: 45px;
+            border-radius: 25px;
+
+            text-align: center;
+        }
+
+        .leader-box h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           DOGODKI
+        ========================== */
+
+        .events {
+            background: white;
+        }
+
+        .event-grid {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .event {
+            border-left: 6px solid var(--zelena);
+
+            background: #f4f7f5;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .event-date {
+            color: var(--zelena);
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .event h3 {
+            color: var(--modra);
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           GALERIJA
+        ========================== */
+
+        .gallery {
+            background: var(--ozadje);
+        }
+
+        .gallery-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 260px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #dfe6e1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            transition: 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.07);
+        }
+
+
+        /* =========================
+           KONTAKT
+        ========================== */
+
+        .contact {
+            background: white;
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .social {
+            padding: 14px 25px;
+            border-radius: 50px;
+
+            color: white;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .facebook {
+            background: #1877f2;
+        }
+
+        .instagram {
+            background: linear-gradient(
+                45deg,
+                #f58529,
+                #dd2a7b,
+                #8134af
+            );
+        }
+
+        .social:hover {
+            transform: translateY(-4px);
+        }
+
+
+        /* =========================
+           NOGA
+        ========================== */
+
+        footer {
+            background: var(--modra-temna);
+            color: #dce8e2;
+
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+
+        /* =========================
+           TELEFON
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .branch-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .event-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 65px 5%;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
+
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .branch-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image img {
+                height: 300px;
+            }
+
+            .leader-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVIGACIJA
+    ========================== -->
+
+    <nav>
+
+        <a href="#domov" class="logo">
+            STEG <span>LJUBLJANA 3</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#domov">Domov</a></li>
+            <li><a href="#veje">Veje</a></li>
+            <li><a href="#voditelji">Voditelji</a></li>
+            <li><a href="#dogodki">Dogodki</a></li>
+            <li><a href="#galerija">Galerija</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         UVOD
+    ========================== -->
+
+    <header class="hero" id="domov">
+
+        <div class="hero-content">
+
+            <h1>
+                STEG<br>
+                <span>LJUBLJANA 3</span>
+            </h1>
+
+            <p>
+                Skavti, prijateljstvo, dogodivščine
+                in življenje v naravi.
+            </p>
+
+            <a href="#veje" class="button">
+                SPOZNAJ NAS ↓
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         O NAS
+    ========================== -->
+
+    <section class="about">
+
+        <div class="section-title">
+
+            <h2>Kdo smo?</h2>
+
+            <p>
+                Smo skavti Stega Ljubljana 3.
+                Skupaj rastemo, se učimo, raziskujemo
+                in ustvarjamo nepozabne spomine.
+            </p>
+
+        </div>
+
+
+        <div class="about-container">
+
+            <div class="about-image">
+
+                <img
+                    src="rutke.jpg"
+                    alt="Skavtske rutke Stega Ljubljana 3"
+                >
+
+            </div>
+
+
+            <div class="about-text">
+
+                <h3>Vedno pripravljeni! 🌲</h3>
+
+                <p>
+                    Skavtstvo je prostor za prijateljstvo,
+                    pustolovščine, odgovornost in življenje
+                    v naravi.
+                </p>
+
+                <p>
+                    V našem stegu se srečujejo otroci,
+                    mladi in voditelji različnih starosti.
+                    Vsaka veja ima svoje dogodivščine,
+                    izzive in način skavtskega življenja.
+                </p>
+
+                <p>
+                    Skupaj ustvarjamo spomine, ki ostanejo
+                    še dolgo po koncu srečanja.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         VEJE
+    ========================== -->
+
+    <section class="branches" id="veje">
+
+        <div class="section-title">
+
+            <h2>Naše veje</h2>
+
+            <p>
+                Vsaka starost ima svojo vejo,
+                svoje dogodivščine in svoje izzive.
+            </p>
+
+        </div>
+
+
+        <div class="branch-grid">
+
+
+            <!-- BOBRI -->
+
+            <div class="branch-card bobri">
+
+                <div class="branch-top"></div>
+
+                <div class="branch-content">
+
+                    <div class="branch-icon">
+                        🦫
+                    </div>
+
+                    <h3>
+                        Bobri in bobrovke
+                    </h3>
+
+                    <div class="age">
+                        6–7 let
+                    </div>
+
+                    <p>
+                        Bobri in bobrovke živimo v koloniji.
+                        Radi odkrivamo skrivnosti gozda,
+                        se igramo in opazujemo svet okoli nas.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- VOLČIČI -->
+
+            <div class="branch-card volcici">
+
+                <div class="branch-top"></div>
+
+                <div class="branch-content">
+
+                    <div class="branch-icon">
+                        🐺
+                    </div>
+
+                    <h3>
+                        Volčiči in volkuljice
+                    </h3>
+
+                    <div class="age">
+                        8–10 let
+                    </div>
+
+                    <p>
+                        Skupaj odkrivamo svet, se učimo
+                        skavtskih veščin, pomagamo drugim
+                        in doživljamo nove dogodivščine.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- IV -->
+
+            <div class="branch-card iv">
+
+                <div class="branch-top"></div>
+
+                <div class="branch-content">
+
+                    <div class="branch-icon">
+                        🖐️
+                    </div>
+
+                    <h3>
+                        Izvidniki in vodnice
+                    </h3>
+
+                    <div class="age">
+                        11–15 let
+                    </div>
+
+                    <p>
+                        Izvidništvo je posebna izkušnja,
+                        kjer se učimo skavtskega znanja,
+                        pridobivamo izkušnje in premagujemo
+                        izzive.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PP -->
+
+            <div class="branch-card pp">
+
+                <div class="branch-top"></div>
+
+                <div class="branch-content">
+
+                    <div class="branch-icon">
+                        🥾
+                    </div>
+
+                    <h3>
+                        Popotniki in popotnice
+                    </h3>
+
+                    <div class="age">
+                        16–21 let
+                    </div>
+
+                    <p>
+                        PP so mladi, ki imajo znotraj
+                        le-te možnost odkrivanja,
+                        odgovornosti in preseganja
+                        svojih meja.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         VODITELJI
+    ========================== -->
+
+    <section class="leaders" id="voditelji">
+
+        <div class="section-title">
+
+            <h2>Voditelji</h2>
+
+            <p>
+                Spoznaj ljudi, ki s svojo energijo,
+                časom in idejami ustvarjajo skavtske
+                dogodivščine.
+            </p>
+
+        </div>
+
+
+        <div class="leader-box">
+
+            <h3>Naša voditeljska ekipa 🧭</h3>
+
+            <p>
+                Tukaj bomo dodali fotografije,
+                imena in kratke predstavitve naših
+                voditeljev.
+            </p>
+
+            <br>
+
+            <p>
+                <strong>Ta del lahko skupaj uredimo,
+                ko mi pošlješ podatke.</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DOGODKI
+    ========================== -->
+
+    <section class="events" id="dogodki">
+
+        <div class="section-title">
+
+            <h2>Dogodki</h2>
+
+            <p>
+                Kaj se dogaja v našem stegu?
+            </p>
+
+        </div>
+
+
+        <div class="event-grid">
+
+
+            <div class="event">
+
+                <div class="event-date">
+                    📅 DATUM
+                </div>
+
+                <h3>
+                    Skavtsko srečanje
+                </h3>
+
+                <p>
+                    Tukaj bo opis prihajajočega
+                    dogodka.
+                </p>
+
+            </div>
+
+
+            <div class="event">
+
+                <div class="event-date">
+                    📅 DATUM
+                </div>
+
+                <h3>
+                    Izlet
+                </h3>
+
+                <p>
+                    Tukaj bo opis izleta,
+                    lokacija in informacije.
+                </p>
+
+            </div>
+
+
+            <div class="event">
+
+                <div class="event-date">
+                    📅 DATUM
+                </div>
+
+                <h3>
+                    Tabor
+                </h3>
+
+                <p>
+                    Tukaj lahko objavimo informacije
+                    o naslednjem taboru.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALERIJA
+    ========================== -->
+
+    <section class="gallery" id="galerija">
+
+        <div class="section-title">
+
+            <h2>Galerija 📸</h2>
+
+            <p>
+                Nekaj utrinkov iz našega skavtskega življenja.
+            </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+                <img
+                    src="rutke.jpg"
+                    alt="Skavtske rutke"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="veje.jpg"
+                    alt="Skavtske veje"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="rutke.jpg"
+                    alt="Skavtski utrinek"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="veje.jpg"
+                    alt="Skavtski utrinek"
+                >
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         KONTAKT
+    ========================== -->
+
+    <section class="contact" id="kontakt">
+
+        <div class="section-title">
+
+            <h2>Spremljaj nas</h2>
+
+            <p>
+                Oglej si naše fotografije, dogodke
+                in najnovejše utrinke.
+            </p>
+
+        </div>
+
+
+        <div class="contact-box">
+
+            <p>
+                Najdeš nas tudi na družbenih omrežjih.
+            </p>
+
+
+            <div class="social-buttons">
+
+                <a
+                    class="social facebook"
+                    href="https://www.facebook.com/Ljubljana3/"
+                    target="_blank"
+                >
+                    Facebook
+                </a>
+
+
+                <a
+                    class="social instagram"
+                    href="https://www.instagram.com/skavti_ljubljana3/"
+                    target="_blank"
+                >
+                    Instagram
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         NOGA
+    ========================== -->
+
+    <footer>
+
+        <p>
+            <strong>Steg Ljubljana 3</strong>
+        </p>
+
+        <p>
+            Skavti • prijateljstvo • dogodivščine • narava
+        </p>
+
+        <br>
+
+        <p>
+            © 2026 Steg Ljubljana 3
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
